@@ -11,6 +11,10 @@ Status legend: `[x]` verified complete, `[ ]` incomplete, `[-]` not currently ve
 
 ## Product
 
+- [x] Add the original premium editorial landing experience and direct workspace CTA described in `DESIGN.md`.
+- [x] Add an explicitly illustrative semantic-drift hero and responsive scroll story without fabricated analysis claims.
+- [x] Restyle the existing workspace without changing its API contract, validation, SERV behavior, or functional controls.
+- [x] Verify reduced-motion behavior, keyboard focus entry, responsive stacking, and horizontal-overflow safeguards for the transformed interface in automated Edge checks.
 - [x] Original instructions can be entered.
 - [x] At least two handoffs can be entered and more can be added.
 - [x] Request and input-size validation works.
@@ -26,7 +30,7 @@ Status legend: `[x]` verified complete, `[ ]` incomplete, `[-]` not currently ve
 - [x] Errors are handled without fake results or leaked secrets.
 - [x] SERV rejection diagnostics preserve upstream status and allowlisted error codes without exposing raw upstream text.
 - [x] Public analysis calls have per-IP throttling plus a per-instance hourly SERV-call budget; global distributed protection remains a deployment requirement.
-- [ ] Complete hands-on desktop, keyboard, and mobile browser QA (implementation is responsive; automation unavailable here).
+- [ ] Complete hands-on desktop, keyboard, and mobile browser QA (automated Edge checks passed; physical-device and full manual interaction QA remain incomplete).
 
 ## Verification
 
@@ -34,6 +38,7 @@ Status legend: `[x]` verified complete, `[ ]` incomplete, `[-]` not currently ve
 - [x] Tests cover first-problem detection, reported completion, exact and invalid evidence, malformed output, missing key, validation, limits, export, Vercel parity, and secret handling.
 - [x] Final accuracy targeted tests pass (4/4 on 2026-11-14).
 - [x] Complete deterministic suite passes (28/28 on 2026-11-14 after the accuracy refinement).
+- [x] Post-transformation deterministic suite passes (29/29 on 2026-11-14; no live SERV request).
 - [x] Production build passes (2026-11-14).
 - [x] Final release verification passes (28/28 complete tests and five-file production build on 2026-11-14; no live request).
 - [x] Offline HTTP 400 audit re-verified the current GPT-6 Luna request and strict function schema against official OpenServ and OpenAI documentation (2026-11-14; no live request).

@@ -70,7 +70,7 @@ The public source repository is `https://github.com/YakiUdoph/Viandra`. `node_mo
 - One user-confirmed live SERV analysis succeeded, but the refined semantic rubric has not been tested live and model accuracy remains case-dependent.
 - A SERV API key was exposed outside the application and must be revoked or rotated before any further use. It was not copied into Vercel.
 - The production URL requires Vercel Authentication and is not an anonymous public demo link.
-- Automated browser or device testing was unavailable; responsive and keyboard behavior is implemented in source but still needs hands-on browser QA.
+- Automated Edge checks verified a 390px viewport without horizontal overflow, workspace CTA navigation, first-tab skip-link focus, example loading, and reduced-motion fallback. Hands-on physical-device and full manual interaction QA remain incomplete.
 - The in-memory per-IP throttle and hourly SERV-call budget are per process/instance, not a distributed abuse-control system. Public production still needs platform-level global rate limiting or access control.
 - Exact evidence matching is case- and whitespace-sensitive. A match proves quotation presence, not interpretation correctness.
 - Proposed corrections are model drafts. Users must review them; Viandra cannot independently guarantee that a semantic statement was not inferred.
@@ -99,7 +99,7 @@ It is industry-independent. It is not a generic chatbot, compliance or safety ce
 
 ### Tested
 
-- 28 deterministic Node tests pass.
+- 29 deterministic Node tests pass.
 - Production asset build passes.
 - Local page and health endpoint return successfully.
 - Missing SERV configuration returns an honest HTTP 503 without fabricated results.
@@ -108,7 +108,7 @@ It is industry-independent. It is not a generic chatbot, compliance or safety ce
 ### Not yet tested
 
 - A post-refinement live SERV accuracy check.
-- Automated end-to-end browser behavior and mobile device rendering.
+- Hands-on physical-device rendering and a full manual end-to-end browser pass.
 - Anonymous judge access to a production demo; the current Vercel deployment is intentionally protected.
 
 ### Planned only if needed

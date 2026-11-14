@@ -306,3 +306,17 @@ elements.copy.addEventListener("click", copyCorrection);
 elements.export.addEventListener("click", exportReport);
 addHandoff();
 addHandoff();
+
+const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+if (!reduceMotion.matches && "IntersectionObserver" in window) {
+  document.documentElement.classList.add("motion-ready");
+  const reveals = document.querySelectorAll(".reveal:not(.is-visible)");
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add("is-visible");
+      observer.unobserve(entry.target);
+    });
+  }, { rootMargin: "0px 0px -12%", threshold: .12 });
+  reveals.forEach((element) => revealObserver.observe(element));
+}

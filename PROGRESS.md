@@ -105,3 +105,14 @@ At that point, no application tests, build, live SERV request, deployment, or su
 - Deployed the clean GitHub-matching checkout to production. Deployment `dpl_FiSb6zhtdbkuf3H9sJppYcFGNU6B` reached `READY` and was aliased to `https://viandra.vercel.app` with Vercel Authentication reported on the deployment.
 - Used authenticated Vercel access to verify the homepage and `/api/health`; the health response was `{"ok":true,"servConfigured":false}`. An unauthenticated request redirected to Vercel Authentication. `/api/analyze` was not invoked, and no SERV credits were spent.
 - The protected deployment is not an anonymous public demo. Key rotation, any future replacement secret, hands-on browser QA, post-refinement live accuracy testing, and hackathon submission remain incomplete.
+
+## 2026-11-14 — Premium visual transformation
+
+- Studied the supplied Glaze motion reference locally and used only general presentation cues: large editorial hierarchy, airy composition, staged entrances, a compact floating header, and timeline-to-statement choreography. No Glaze branding, artwork, objects, video, or proprietary asset was added to the product.
+- Updated `DESIGN.md` and `TASKS.md` before implementation, preserving the unavailable-Playbook limitation and all existing product boundaries.
+- Added an original landing journey with the required headline and direct workspace CTA, an explicitly illustrative source-to-contradiction hero, a responsive evidence story, and a premium restyle of the functional investigation workspace.
+- Self-hosted official SIL Open Font License files for Inter Tight and IBM Plex Mono; added no package or runtime dependency.
+- Preserved all existing analysis controls, DOM IDs, API behavior, SERV configuration, validation, evidence handling, copy/export actions, and security controls. No live SERV request or paid API call was made.
+- Automated Edge checks verified a true 390px viewport with no horizontal overflow, a visible primary CTA that reaches the workspace, successful example loading with two handoffs, skip-link first focus, and visible reduced-motion content without reveal choreography. Representative desktop and compact visual captures were inspected. Hands-on physical-device and full manual interaction QA remain incomplete.
+- Added a deterministic landing/workspace contract test. `npm.cmd test` passed 29/29 tests, and `npm.cmd run build` passed with five required production files verified.
+- No deployment was performed. The existing protected Vercel production deployment does not include this visual transformation yet.

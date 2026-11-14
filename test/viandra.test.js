@@ -1,5 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
 import {
   AppError,
   buildServRequest,
@@ -26,6 +27,22 @@ const input = validateTraceRequest({
     "Wait for payment confirmation before dispatch. Use recycled boxes. Delivery remains due Friday. Morning delivery requested. Call before arrival. Include the signed invoice.",
     "Package ready. Dispatch immediately. Use standard boxes. Delivery is due Monday. Morning may work. Include the signed invoice."
   ]
+});
+
+test("premium landing remains illustrative and preserves the functional workspace contract", () => {
+  const html = readFileSync("public/index.html", "utf8");
+  const css = readFileSync("public/styles.css", "utf8");
+  const browser = readFileSync("public/app.js", "utf8");
+
+  assert.match(html, /Every handoff[.]\s*<\/span><span>Every detail[.]/);
+  assert.match(html, /Example only · not a live analysis/);
+  assert.match(html, /href="#workspace">\s*<span>Start tracing/);
+  for (const id of ["original", "handoff-list", "trace-form", "trace-button", "results-panel", "requirement-list", "detail-panel", "correction-text", "copy-correction", "export-report"]) {
+    assert.match(html, new RegExp(`id="${id}"`));
+  }
+  assert.equal(/Glaze/i.test(html + css + browser), false);
+  assert.match(css, /prefers-reduced-motion:\s*reduce/);
+  assert.match(browser, /IntersectionObserver/);
 });
 
 const modelTrace = {
