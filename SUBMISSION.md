@@ -1,81 +1,91 @@
 # Viandra submission kit
 
-Draft only. Nothing in this file has been published or submitted.
+Draft only. Nothing in this file has been posted to X or submitted to the official form.
 
-## A. Short product description
+## Submission description
 
-Viandra traces important requirements through successive handoff messages, showing what stayed intact, what disappeared or changed, and the earliest point where work began to diverge.
+Important instructions rarely disappear in one obvious step. They drift as work passes between people, teams, tools, and AI agents: an approval becomes optional, a restriction is softened, or a careful condition is replaced by an ambiguous shortcut. Comparing only the first and last message shows that something changed, but not where the problem began.
 
-## B. Problem statement
+Viandra is an evidence-backed instruction-drift investigator. A user provides the original instructions and two or more ordered handoffs. Viandra traces each requirement across the chain, classifies its meaning as preserved, materially changed, directly contradicted, missing, or genuinely unclear, and highlights the earliest problematic handoff. Every supported finding is tied to an exact quotation from the submitted source. The user can inspect the timeline, edit a proposed correction, copy it, and export the investigation as JSON.
 
-Critical instructions often degrade as work moves between people, teams, tools, and AI agents. A faithful paraphrase can look different, while a small wording change can reverse an approval condition, deadline, restriction, or customer preference. Manual comparison is slow and makes the origin of a mistake hard to locate.
+SERV Reasoning powers the semantic work that a keyword diff cannot do: recognizing faithful paraphrases, distinguishing a material change from a direct conflict, and reasoning across the full handoff sequence. Viandra wraps that reasoning in a strict function contract, validates every returned handoff and quotation, and independently computes the earliest issue instead of trusting a model-supplied conclusion.
 
-## C. Solution
+That combination makes the result useful for human review while keeping its boundaries clear. Viandra does not certify compliance, send corrections automatically, or claim model infallibility. It gives operators and builders a faster, inspectable starting point for root-cause analysis wherever work crosses organizational or agent boundaries.
 
-Users paste original instructions and two or more handoffs. Viandra extracts important requirements, traces each one across the chain, classifies every transition, validates returned quotations against the source, and highlights the earliest problematic handoff. It then prepares a correction for human review and provides a portable investigation report.
+Viandra fits the Open Track because the mechanism is industry-independent: the same evidence-first trace can examine operational instructions, customer requirements, approval conditions, or multi-agent task handoffs. Its business relevance is reduced rework and investigation time—not an invented claim of customers or revenue.
 
-## D. Why SERV Reasoning is necessary
+## Short version
 
-This is a semantic task rather than a keyword diff: faithful paraphrases must remain preserved, while contradictions and material changes need contextual judgment. SERV Reasoning performs that bounded interpretation in one structured request. Viandra then validates structure and quotation provenance before showing results.
+Viandra traces important instructions across successive human and AI handoffs, identifies the first point where meaning materially changed, conflicted, disappeared, or became unclear, and ties every supported finding to exact source evidence. SERV Reasoning performs the semantic comparison; Viandra validates the structured result, verifies quotations, and keeps corrections under human control.
 
-## E. Originality and differentiation
+## How SERV is used
 
-Viandra focuses on where meaning first drifted across successive free-text handoffs. Unlike SOP capture or a requirements-to-test matrix, it produces an evidence-linked narrative of instruction survival and a reviewable next message. This is a positioning statement, not a guarantee that no similar product exists.
+- One explicit server-side SERV chat-completions request analyzes the original and all ordered handoffs.
+- A forced strict function asks for requirements, classifications, evidence, explanations, and a proposed correction.
+- SERV supplies semantic interpretation that simple text similarity cannot.
+- Viandra validates the returned structure and complete handoff coverage.
+- Supported evidence must match the submitted source exactly.
+- Earliest-problem selection is recomputed locally from validated classifications.
+- The browser never receives the API key, and the application does not retry automatically.
+- The current Vercel production environment has no SERV key, so it cannot spend credits.
 
-## F. Technical architecture
+## Meaningful hackathon work
 
-- Dependency-free Node.js 20 server and responsive HTML/CSS/JavaScript client.
-- Stateless `POST /api/analyze` endpoint with validation, size limits, timeout, throttling, and safe errors.
-- One server-side SERV chat-completions request with a required system prompt and forced structured function output.
-- Strict response checks, exact substring evidence validation, and locally computed first-problem handoff.
-- Vercel-compatible serverless endpoint plus a portable Node server.
+The repository history records that the checkout was empty at initial inspection on 2026-11-14. During the hackathon pass, Viandra’s application, SERV integration, evidence validation, deterministic tests, release documentation, deployment configuration, and visual experience were created and verified. This statement describes repository history; it does not reconstruct unavailable kickoff guidance or the missing Serial Hackathon Winner Playbook.
 
-## G. Implemented features
+## Demo narration and real-footage shot list
 
-- Ordered multi-handoff input and validation.
-- All five required classifications.
-- Inspectable evidence timeline and earliest problem.
-- Unsupported-quotation warnings.
-- Editable proposed correction, copy, and JSON export.
-- Responsive accessible UI, security headers, secret isolation, bounded request behavior, and explicit failure states.
-- Twenty-eight passing deterministic tests and a passing production asset build.
+Target length: approximately 105 seconds. Record the real application. Do not composite a fake result or describe a deterministic fixture as a live SERV response.
 
-## H. Known limitations
+| Time | Real application footage | Narration |
+| --- | --- | --- |
+| 0–10s | Open the redesigned landing page and scroll through the headline. | “Important instructions rarely fail all at once. They drift as work passes between people, teams, and AI agents.” |
+| 10–23s | Select **Start tracing** and show the empty workspace. | “Viandra traces that chain and shows not only what changed, but the earliest handoff where the problem appeared.” |
+| 23–38s | Select **Load example**. Show the original payment condition and both ordered handoffs. | “Here, dispatch must wait for confirmed payment. The first handoff preserves that condition. The second says to dispatch immediately.” |
+| 38–51s | Select **Trace instructions** during an explicitly authorized live run. Keep any credential and developer tooling off-screen. | “One bounded SERV Reasoning request compares the meaning across the full sequence and returns a structured requirement trace.” |
+| 51–70s | Show the actual returned requirement cards and classifications. | “This is semantic reasoning, not a keyword diff: faithful paraphrases can remain preserved, while direct conflicts are separated from material non-conflicting changes.” |
+| 70–84s | Open the relevant requirement and point to exact quotations and **First issue**. | “Every supported finding must quote the submitted source exactly. Viandra validates those quotations and computes the first problematic handoff locally.” |
+| 84–98s | Edit the proposed correction, then use **Copy correction** and **Export JSON**. | “The correction stays editable and under human control. The investigation can be copied or exported for the next review step.” |
+| 98–105s | Return to the closing statement or repository page. | “Viandra makes instruction drift visible, evidence-backed, and actionable—before it becomes another downstream failure.” |
 
-The user confirmed one genuine live SERV analysis that returned structured results and exposed an over-literal semantic classification issue. The prompt refinement made afterward has not been tested live. A Vercel production deployment exists at `https://viandra.vercel.app`, but Vercel Authentication protects all deployments and the URL is not an anonymous public demo. Automated Edge checks covered representative desktop and 390px mobile layout, horizontal overflow, CTA navigation, focus entry, example loading, and reduced-motion fallback; hands-on physical-device and full manual interaction QA remain incomplete. The rate limiter is per instance. Exact quote checks do not prove the semantic interpretation. Proposed corrections require human review. A SERV key was exposed outside the application and must be rotated before further use; it was not configured in Vercel, so live analysis is disabled there. No customer validation, revenue, traction, or production usage is claimed.
+Recording rules:
 
-## I. Demo walkthrough
+- Rotate the exposed key before the authorized live run.
+- Record only an actual post-refinement result. If a live run is not authorized or fails, do not substitute a fixture and call it live.
+- Ensure the browser contains no account email, token, request headers, local file paths, or unrelated tabs.
+- Keep the first and final frames long enough to read.
+- Confirm the recorded narration matches what the footage actually shows.
+- Publish the resulting video at an accessible URL and replace the placeholder below.
 
-1. Open Viandra and select **Load example**.
-2. Show the original: “Do not dispatch until payment is confirmed.”
-3. Show Handoff 1 preserving the condition and Handoff 2 saying “Dispatch immediately.”
-4. Select **Trace instructions** and explain that this makes one real SERV request.
-5. Open the payment requirement and inspect exact evidence across both handoffs.
-6. Point to **First issue: Handoff 2** and the `CONTRADICTED` classification.
-7. Show the human-review warning and an unsupported-evidence state if available in a separate deterministic demonstration.
-8. Review and edit the proposed correction, copy it, then export the JSON investigation.
-9. State the boundaries: no automatic sending, approvals, certification, or persistent storage.
+## X post draft
 
-Do not publish this demo until the exposed SERV key has been rotated, the refined prompt has been checked with an explicitly authorized live request, and the deployed environment has been verified.
+> Built Viandra for the OpenServ SERV Hackathon 02 Open Track. It traces how important instructions survive—or drift—across human and AI handoffs, pinpoints the first problematic message, and grounds every supported finding in source evidence.
+>
+> Demo: [DEMO_OR_VIDEO_URL]
+>
+> Code: https://github.com/YakiUdoph/Viandra
+>
+> #SERVHackathon
 
-## J. Suggested X announcement
+Do not publish until the demo/video URL is real and accessible. Adjust the OpenServ account mention or required hashtag only after checking the current organizer guidance.
 
-> Built Viandra for the OpenServ SERV Hackathon 02 Open Track. It traces how important instructions survive—or drift—across successive handoffs, pinpoints the first problematic message, and keeps every finding tied to source evidence for human review. [demo] [public repo] #SERVHackathon
+## Submission links
 
-Replace placeholders with real public URLs. Do not post automatically.
+| Item | URL | Status |
+| --- | --- | --- |
+| Public repository | https://github.com/YakiUdoph/Viandra | Available |
+| Protected production | https://viandra.vercel.app | Available only with Vercel Authentication; not an anonymous demo |
+| Demo video | `[DEMO_OR_VIDEO_URL]` | Missing |
+| X post | `[X_POST_URL]` | Missing |
+| Official rules/form entry point | https://www.openserv.ai/hackathon-2 | Available |
 
-## K. Submission checklist
+## Final submission checklist
 
-- [ ] Confirm organizer eligibility and any kickoff-only restrictions.
-- [x] Complete one genuine live SERV analysis (user-confirmed on 2026-11-14; semantic issue observed).
-- [ ] Revoke or rotate the exposed SERV API key before any further use.
-- [ ] Run one explicitly authorized post-refinement live accuracy check with synthetic data.
-- [ ] Perform desktop, keyboard, and mobile browser QA.
-- [x] Stage the reviewed 27-file initial commit, inspect staged content for secrets, and create the first commit.
-- [x] Create and verify an authentication-protected Vercel production deployment with no SERV key configured.
-- [ ] Provide an accessible public demo only after its funded endpoint and abuse controls are safe; the current production URL requires Vercel Authentication.
-- [x] Make the repository public and confirm the published release contains no detected credential.
-- [ ] Record a real demo link or video.
-- [ ] Review this write-up against actual final behavior.
-- [ ] Publish the X announcement with real links before the deadline.
-- [ ] Complete the submission form and include the X-post URL by November 15, 2026 at 23:59 UTC.
+- [ ] Revoke or rotate the exposed SERV API key before any further live use.
+- [ ] Perform one explicitly authorized post-refinement live SERV check with synthetic data.
+- [ ] Record the actual application footage using the verified result.
+- [ ] Publish the video at a judge-accessible URL and replace the placeholder.
+- [ ] Recheck organizer eligibility, kickoff-only rules, hashtags, and the live form fields.
+- [ ] Publish the X post with the real demo/video and repository links.
+- [ ] Complete the official form, including Open Track, write-up, repository, demo/video, SERV explanation, and X-post URL.
+- [ ] Submit before November 15, 2026 at 23:59 UTC.

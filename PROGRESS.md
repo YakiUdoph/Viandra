@@ -116,3 +116,16 @@ At that point, no application tests, build, live SERV request, deployment, or su
 - Automated Edge checks verified a true 390px viewport with no horizontal overflow, a visible primary CTA that reaches the workspace, successful example loading with two handoffs, skip-link first focus, and visible reduced-motion content without reveal choreography. Representative desktop and compact visual captures were inspected. Hands-on physical-device and full manual interaction QA remain incomplete.
 - Added a deterministic landing/workspace contract test. `npm.cmd test` passed 29/29 tests, and `npm.cmd run build` passed with five required production files verified.
 - No deployment was performed. The existing protected Vercel production deployment does not include this visual transformation yet.
+
+## 2026-11-14 — Final release and submission pass
+
+- Re-read and audited all seven governance documents plus the competition and submission records. Preserved the complete recorded project history and the explicit limitation that the Serial Hackathon Winner Playbook is unavailable; no missing guidance was reconstructed.
+- Rewrote the README around an immediately executable three-command test path followed by the product problem, mechanism, evidence-first differentiation, SERV role, verified behavior, deployment state, and limitations.
+- Updated the current architecture, verified competition gates, judge-facing submission description, 105-second real-footage narration and shot list, X draft, and evidence-weighted readiness assessment. No customer, revenue, live-result, public-video, X-post, or submission claim was invented.
+- Ran deterministic local Edge QA without SERV access. It verified blank-input validation, the initial two handoffs, adding a third handoff, the missing-credential failure, `PRESERVED` and `CONTRADICTED` rendering, exact quotations, earliest issue, correction editing, copy, downloaded JSON export, first-Tab skip-link focus, and no horizontal overflow at 390px. The result fixture was explicitly local; paid SERV calls were zero.
+- Ran `npm.cmd test` once: 29/29 tests passed with zero failures. Ran `npm.cmd run build` once: five required production files were verified.
+- Confirmed local `HEAD` and published GitHub `main` both identified redesign commit `e3851cf0653ac0be12788d082b5a09c2a0178fbc`; application source was unchanged during this pass.
+- Re-verified the existing Vercel `viandra` project, Vercel Authentication with `deploymentType: "all"`, and an empty production environment-variable set before deployment. The exposed key was not read, reused, or configured.
+- Deployed the verified redesign revision to the existing project. Deployment `dpl_H2CisNJJAGChs9krd1fWy1c4shos` reached `READY`, reported Vercel Authentication, and was aliased to `https://viandra.vercel.app`.
+- Through authenticated Vercel access, verified the production headline “Every handoff. Every detail. Accounted for.” and `/api/health` response `{"ok":true,"servConfigured":false}`. `/api/analyze` was not invoked.
+- Readiness is 80/100. Remaining human gates are key revocation/rotation, one authorized post-refinement live check, real-footage recording and publication, the X post, and the official form.

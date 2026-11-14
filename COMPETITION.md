@@ -1,55 +1,63 @@
 # SERV Hackathon 02 compliance record
 
-Checked against the official Edition 02 event page and official OpenServ documentation on 2026-11-14; the submission form itself did not expose its field list to the available read-only inspection.
+Checked against the official Edition 02 event page on 2026-11-14. The live submission form and any kickoff-only material were not available for complete inspection.
 
-## Verified requirements
+## Verified official requirements
 
-- Event/build period: November 2–15, 2026.
+- Event period: November 2–15, 2026.
 - Submission deadline: November 15, 2026 at 23:59 UTC.
-- Intended track: Open Track — any domain and stack, built on SERV Reasoning.
+- Selected track: Open Track—any domain and stack, built on SERV Reasoning.
 - Every track must use SERV Reasoning.
-- Submission deliverables: public code repository, demo link or video, and a short write-up explaining the project, SERV use, and selected track.
-- An X post is required by the deadline and its link must be included in the form.
-- Existing projects are allowed if the write-up explains the meaningful feature built during the hackathon and how SERV powers it.
+- Required deliverables: a public code repository, a demo link or video, and a short write-up explaining the project, SERV use, and selected track.
+- An X post is required by the deadline, and its URL must be included in the submission form.
+- Existing projects are allowed when the write-up explains the meaningful feature built during the hackathon and how SERV powers it.
 - Published judging criteria: creativity, user readiness, and revenue potential.
-- An OpenServ account and API key are required. Registration is free; the page states pre-registered participants receive starter credits.
+- An OpenServ account and API key are required. The event page states that pre-registered participants receive starter credits.
 
-Official sources:
+Official source:
 
 - https://www.openserv.ai/hackathon-2
+
+Supporting SERV documentation used by the implementation:
+
 - https://docs.openserv.ai/serv-reasoning/api
 - https://docs.openserv.ai/serv-reasoning/api/chat-completions
 - https://docs.openserv.ai/serv-reasoning/models
 
+## Current submission alignment
+
+| Requirement | Gate | Evidence |
+| --- | --- | --- |
+| Open Track project using SERV Reasoning | PASS | SERV performs the core semantic trace through a structured chat-completions request; it is not decorative. |
+| Public repository | PASS | https://github.com/YakiUdoph/Viandra |
+| Short project write-up | PASS | Judge-ready copy is prepared in `SUBMISSION.md`. |
+| Explanation of SERV usage | PASS | `README.md`, `ARCHITECTURE.md`, and `SUBMISSION.md` describe the reasoning boundary and local validation. |
+| Demo link or video | FAIL | The production URL requires Vercel Authentication; no public video has been recorded or published. |
+| X post | FAIL | A draft exists, but nothing has been published. |
+| X post URL in form | FAIL | No X post URL exists and the form has not been submitted. |
+| Submission before deadline | NOT VERIFIED | This remains a human action. |
+
+## Honest implementation evidence
+
+- The application uses the documented SERV base URL, bearer authentication, required system message, catalog model, and chat-completions format.
+- The user reported one genuine live SERV analysis on 2026-11-14. It returned structured output and exposed an overly literal semantic classification issue.
+- The classification rubric was refined afterward. That revised rubric has not been checked with another authorized paid request.
+- Deterministic tests validate the application contract and safety behavior, not future model accuracy.
+- The current protected Vercel deployment contains no SERV credential and cannot perform live analysis.
+- The public repository is available, but a protected deployment is not represented as an anonymous demo.
+
 ## Unknown from accessible official material
 
 - Detailed participant eligibility restrictions.
-- Additional challenge rules announced at kickoff but not present on the event page.
-- A complete list of prohibited or restricted practices.
-- Whether the submission form requests fields beyond those described publicly.
-- Exact demo hosting or video-duration requirements.
+- Additional rules announced only at kickoff.
+- A complete list of prohibited practices.
+- Submission form fields beyond those described publicly.
+- Exact demo-hosting or video-duration requirements.
 
-These items must be checked in the live submission form and organizer channels before submission. Viandra does not claim full compliance while they remain unknown.
+These items must be checked in the live form and organizer channels before submission. Viandra does not claim full compliance while they remain unknown.
 
-## Current evidence of alignment
+## Positioning and business relevance
 
-- The server integration uses the documented SERV base URL, bearer authentication, required system prompt, universal chat-completions endpoint, and a verified catalog model.
-- SERV Reasoning performs the core semantic requirement tracing; it is not decorative or replaceable by a hardcoded success response.
-- The user reports one genuine live SERV analysis completed on 2026-11-14. The final prompt refinement has not been tested live.
-- The public-repository, live-demo/video, write-up, X-post, and submission-form actions remain external tasks for the user.
+Viandra addresses semantic instruction drift across successive free-text handoffs. The immediate users are operators, reviewers, and builders who need to locate where a requirement changed—not merely prove that the first and last texts differ. The business case is reduced investigation time and rework in workflows where approvals, restrictions, deadlines, or customer intent pass across multiple people or agents.
 
-## Bounded adjacent-product review
-
-This review is directional, not exhaustive market research:
-
-- Scribe describes automated creation of step-by-step process documentation. Viandra does not create SOPs; it compares a source instruction with later messages.
-- Atlassian’s requirements traceability template links requirements to tasks, test cases, deliverables, and dependencies. Jira marketplace products similarly focus on structured requirements and lifecycle relationships.
-- Viandra’s proposed distinction is a lightweight, industry-independent investigation of semantic drift across successive free-text handoffs, with exact evidence and the earliest problematic message.
-
-Sources:
-
-- https://get.scribehow.com/process-documentation-1/
-- https://www.atlassian.com/software/jira/templates/requirements-traceability-matrix
-- https://marketplace.atlassian.com/apps/1231062/tracecloud-projects-requirements
-
-No guarantee of market originality or uniqueness is made.
+This is a positioning hypothesis, not a claim of customers, revenue, traction, or market uniqueness. Adjacent products commonly document processes or link structured requirements to tasks and tests; Viandra’s narrower distinction is an evidence-grounded, earliest-handoff investigation of semantic drift.

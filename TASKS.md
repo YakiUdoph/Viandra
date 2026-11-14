@@ -30,7 +30,8 @@ Status legend: `[x]` verified complete, `[ ]` incomplete, `[-]` not currently ve
 - [x] Errors are handled without fake results or leaked secrets.
 - [x] SERV rejection diagnostics preserve upstream status and allowlisted error codes without exposing raw upstream text.
 - [x] Public analysis calls have per-IP throttling plus a per-instance hourly SERV-call budget; global distributed protection remains a deployment requirement.
-- [ ] Complete hands-on desktop, keyboard, and mobile browser QA (automated Edge checks passed; physical-device and full manual interaction QA remain incomplete).
+- [x] Complete deterministic browser-path QA for validation, three handoffs, classifications, evidence, earliest issue, correction editing, copy, export, missing credentials, 390px overflow, and keyboard entry (2026-11-14; no live request).
+- [ ] Complete hands-on physical-device and assisted-technology QA; automated Edge coverage does not prove this complete.
 
 ## Verification
 
@@ -40,6 +41,8 @@ Status legend: `[x]` verified complete, `[ ]` incomplete, `[-]` not currently ve
 - [x] Complete deterministic suite passes (28/28 on 2026-11-14 after the accuracy refinement).
 - [x] Post-transformation deterministic suite passes (29/29 on 2026-11-14; no live SERV request).
 - [x] Production build passes (2026-11-14).
+- [x] Final submission-pass deterministic suite passes (29/29 on 2026-11-14; no live SERV request).
+- [x] Final submission-pass production build verifies five required files (2026-11-14).
 - [x] Final release verification passes (28/28 complete tests and five-file production build on 2026-11-14; no live request).
 - [x] Offline HTTP 400 audit re-verified the current GPT-6 Luna request and strict function schema against official OpenServ and OpenAI documentation (2026-11-14; no live request).
 - [x] One genuine live SERV analysis succeeded (user-confirmed on 2026-11-14; semantic issue observed).
@@ -52,6 +55,7 @@ Status legend: `[x]` verified complete, `[ ]` incomplete, `[-]` not currently ve
 - [x] Required environment variables and credit behavior are documented.
 - [x] Vercel routing and server-only environment requirements are verified, and a protected production deployment is ready at `https://viandra.vercel.app`.
 - [x] Vercel Authentication protects all deployments, including production; authenticated homepage and health checks passed.
+- [x] Deploy the redesign revision from GitHub `main` to the existing protected Vercel project; deployment `dpl_H2CisNJJAGChs9krd1fWy1c4shos` is `READY` and the new headline is verified.
 - [ ] Provide an anonymously accessible production demo when its funded endpoint can be protected safely; the current deployment requires Vercel Authentication.
 - [x] Configure platform-level access control before production launch (Vercel Authentication for all deployments).
 - [ ] Revoke or rotate the accidentally exposed SERV API key before any further use.
@@ -60,3 +64,8 @@ Status legend: `[x]` verified complete, `[ ]` incomplete, `[-]` not currently ve
 - [x] Stage and inspect the initial commit, create it, and publish the public repository at `https://github.com/YakiUdoph/Viandra`.
 - [x] Truthful submission materials and checklist are prepared.
 - [x] Final quality-gate and compliance limitations are recorded.
+- [x] Prepare a real-footage 90–120-second narration, shot list, and unposted X draft.
+- [x] Create an evidence-weighted 100-point readiness assessment with explicit gates.
+- [ ] Record and publish an accessible real-application demo video.
+- [ ] Publish the X post with real repository and demo/video links.
+- [ ] Complete the official submission form with the X post URL before the deadline.
