@@ -1,0 +1,16 @@
+{
+  "name": "viandra",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Trace how important instructions survive successive handoffs.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "dev": "node --watch src/server.js",
+    "start": "node src/server.js",
+    "test": "node --test",
+    "build": "node scripts/build.mjs"
+  }
+}

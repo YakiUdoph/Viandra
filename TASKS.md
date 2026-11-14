@@ -1,0 +1,56 @@
+# Tasks
+
+Status legend: `[x]` verified complete, `[ ]` incomplete, `[-]` not currently verifiable.
+
+## Governance and discovery
+
+- [x] Inspect initial repository state.
+- [x] Create the seven required project documents without inventing prior work.
+- [x] Verify accessible official OpenServ competition and SERV documentation.
+- [x] Record unknown competition requirements explicitly.
+
+## Product
+
+- [x] Original instructions can be entered.
+- [x] At least two handoffs can be entered and more can be added.
+- [x] Request and input-size validation works.
+- [x] Genuine documented SERV integration is implemented server-side.
+- [x] Configure GPT-6 Luna Chat Completions function calling with the required `reasoning_effort: "none"`.
+- [x] Refine the semantic rubric for faithful paraphrases, material changes, direct contradictions, and reported completion without hardcoded examples.
+- [x] Returned data and exact evidence quotations are validated.
+- [x] Supported classifications and first problematic handoff are displayed.
+- [x] Findings are inspectable and open to human review.
+- [x] Proposed correction is reviewable and editable.
+- [x] Copy action is implemented.
+- [x] Export action produces a safe structured report.
+- [x] Errors are handled without fake results or leaked secrets.
+- [x] SERV rejection diagnostics preserve upstream status and allowlisted error codes without exposing raw upstream text.
+- [x] Public analysis calls have per-IP throttling plus a per-instance hourly SERV-call budget; global distributed protection remains a deployment requirement.
+- [ ] Complete hands-on desktop, keyboard, and mobile browser QA (implementation is responsive; automation unavailable here).
+
+## Verification
+
+- [x] Deterministic tests cover required classifications and paraphrase behavior.
+- [x] Tests cover first-problem detection, reported completion, exact and invalid evidence, malformed output, missing key, validation, limits, export, Vercel parity, and secret handling.
+- [x] Final accuracy targeted tests pass (4/4 on 2026-11-14).
+- [x] Complete deterministic suite passes (28/28 on 2026-11-14 after the accuracy refinement).
+- [x] Production build passes (2026-11-14).
+- [x] Final release verification passes (28/28 complete tests and five-file production build on 2026-11-14; no live request).
+- [x] Offline HTTP 400 audit re-verified the current GPT-6 Luna request and strict function schema against official OpenServ and OpenAI documentation (2026-11-14; no live request).
+- [x] One genuine live SERV analysis succeeded (user-confirmed on 2026-11-14; semantic issue observed).
+- [-] Post-refinement live accuracy succeeds (not tested; requires explicit authorization, a rotated key, and funded credits).
+- [x] Local HTTP page, health, and missing-key failure paths are checked.
+
+## Release and submission
+
+- [x] README begins with accurate testing instructions.
+- [x] Required environment variables and credit behavior are documented.
+- [x] Vercel routing and server-only environment requirements are verified offline; no deployment was attempted.
+- [-] Accessible production deployment exists (not yet authorized or attempted).
+- [ ] Configure platform-level global rate limiting or access control before a public production launch.
+- [ ] Revoke or rotate the accidentally exposed SERV API key before deployment or further use.
+- [ ] Add only the rotated `SERV_API_KEY` as a Vercel Production Secret; use separate limited credentials for any non-production environment.
+- [x] `.gitignore`, the 27-file prospective initial commit, and non-disclosing secret patterns were audited; generated files and local environments are excluded.
+- [ ] Stage and inspect the initial commit, create it, and publish a public repository (Git index and history are currently empty).
+- [x] Truthful submission materials and checklist are prepared.
+- [x] Final quality-gate and compliance limitations are recorded.
