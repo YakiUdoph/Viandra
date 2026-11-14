@@ -94,3 +94,14 @@ At that point, no application tests, build, live SERV request, deployment, or su
 - Verified Vercel's conventional `public/` assets and `api/analyze.js`/`api/health.js` functions, security headers, server-only environment access, and deterministic endpoint-parity coverage. Updated deployment instructions to store the rotated production key as a Vercel Secret and non-sensitive model/budget values as Config variables. Per-instance throttles remain insufficient global protection for an exposed funded public endpoint.
 - Ran `npm.cmd test` once: 28/28 tests passed with zero failures. Ran `npm.cmd run build` once: five required production files were verified. No defect required an application-code change.
 - No live SERV request, paid API use, deployment, Git staging or commit, GitHub push, public post, or hackathon submission occurred.
+
+## 2026-11-14 — Protected Vercel production deployment
+
+- Verified that local `main` was clean and exactly matched published GitHub `main` commit `59d87df39da9e3d6b25265091c8dba78057882cc` before deployment.
+- Confirmed Vercel CLI 65.11.0 was installed and authenticated as `yakiudoph`.
+- Created the `viandra` Vercel project without a Git-triggered deployment, enabled Vercel Authentication with `deploymentType: "all"`, and independently verified that setting before deploying.
+- Ran `npm.cmd run build` once; the production build passed and verified five required files.
+- Verified that the Vercel production environment contained no environment variables. The exposed SERV key was not read, copied, reused, or configured; live SERV analysis remains disabled.
+- Deployed the clean GitHub-matching checkout to production. Deployment `dpl_FiSb6zhtdbkuf3H9sJppYcFGNU6B` reached `READY` and was aliased to `https://viandra.vercel.app` with Vercel Authentication reported on the deployment.
+- Used authenticated Vercel access to verify the homepage and `/api/health`; the health response was `{"ok":true,"servConfigured":false}`. An unauthenticated request redirected to Vercel Authentication. `/api/analyze` was not invoked, and no SERV credits were spent.
+- The protected deployment is not an anonymous public demo. Key rotation, any future replacement secret, hands-on browser QA, post-refinement live accuracy testing, and hackathon submission remain incomplete.

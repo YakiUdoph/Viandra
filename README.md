@@ -54,25 +54,22 @@ Each click makes one bounded request to the documented SERV chat-completions end
 
 ## Deploy
 
-The included `vercel.json` and `api/analyze.js` support a Vercel deployment with the browser assets in `public/` and the analysis route as a serverless function:
+The included `vercel.json` and `api/analyze.js` support Vercel deployment with browser assets in `public/` and serverless health and analysis routes. A production deployment was created from the clean checkout matching GitHub `main` commit `59d87df39da9e3d6b25265091c8dba78057882cc`:
 
-```powershell
-vercel.cmd link
-vercel.cmd env add SERV_API_KEY production --type secret
-vercel.cmd env add SERV_MODEL production --type config
-vercel.cmd env add SERV_REQUESTS_PER_HOUR production --type config
-vercel.cmd --prod
-```
+- Protected production URL: `https://viandra.vercel.app`
+- Vercel Authentication: enabled for all deployments, including production
+- Authenticated health check: `{"ok":true,"servConfigured":false}`
+- Live SERV analysis: disabled because no replacement `SERV_API_KEY` is configured
 
-Rotate the exposed key before adding its replacement as the Production Secret. Do not reuse that production key for Preview or Development; use a separate limited credential if those environments need live SERV access. These commands are instructions only; deployment was not attempted. Check the target account, project, environment variables, global abuse controls, and billing before deploying. Other Node 20+ hosts can run `npm start` with the same server-side variables.
+The deployment intentionally remains access-controlled and does not spend SERV credits. Rotate the exposed key before adding any replacement as a Production Secret. Do not reuse that production key for Preview or Development; use a separate limited credential if those environments need live SERV access. Other Node 20+ hosts can run `npm start` with the same server-side variables.
 
-Before the initial public commit, stage only the 27 reviewed source and documentation files, then inspect `git status --short`, `git diff --cached --name-only`, and the staged content locally for secrets. `node_modules/`, `dist/`, `.env*` except `.env.example`, `.vercel/`, coverage, and logs are ignored. No initial commit or public repository has been created yet.
+The public source repository is `https://github.com/YakiUdoph/Viandra`. `node_modules/`, `dist/`, `.env*` except `.env.example`, `.vercel/`, coverage, and logs are ignored.
 
 ## Known limitations
 
 - One user-confirmed live SERV analysis succeeded, but the refined semantic rubric has not been tested live and model accuracy remains case-dependent.
-- A SERV API key was exposed outside the application and must be revoked or rotated before deployment or further use.
-- No production URL exists yet.
+- A SERV API key was exposed outside the application and must be revoked or rotated before any further use. It was not copied into Vercel.
+- The production URL requires Vercel Authentication and is not an anonymous public demo link.
 - Automated browser or device testing was unavailable; responsive and keyboard behavior is implemented in source but still needs hands-on browser QA.
 - The in-memory per-IP throttle and hourly SERV-call budget are per process/instance, not a distributed abuse-control system. Public production still needs platform-level global rate limiting or access control.
 - Exact evidence matching is case- and whitespace-sensitive. A match proves quotation presence, not interpretation correctness.
@@ -112,7 +109,7 @@ It is industry-independent. It is not a generic chatbot, compliance or safety ce
 
 - A post-refinement live SERV accuracy check.
 - Automated end-to-end browser behavior and mobile device rendering.
-- A real Vercel or other production deployment.
+- Anonymous judge access to a production demo; the current Vercel deployment is intentionally protected.
 
 ### Planned only if needed
 

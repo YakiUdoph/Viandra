@@ -45,12 +45,13 @@ Status legend: `[x]` verified complete, `[ ]` incomplete, `[-]` not currently ve
 
 - [x] README begins with accurate testing instructions.
 - [x] Required environment variables and credit behavior are documented.
-- [x] Vercel routing and server-only environment requirements are verified offline; no deployment was attempted.
-- [-] Accessible production deployment exists (not yet authorized or attempted).
-- [ ] Configure platform-level global rate limiting or access control before a public production launch.
-- [ ] Revoke or rotate the accidentally exposed SERV API key before deployment or further use.
-- [ ] Add only the rotated `SERV_API_KEY` as a Vercel Production Secret; use separate limited credentials for any non-production environment.
+- [x] Vercel routing and server-only environment requirements are verified, and a protected production deployment is ready at `https://viandra.vercel.app`.
+- [x] Vercel Authentication protects all deployments, including production; authenticated homepage and health checks passed.
+- [ ] Provide an anonymously accessible production demo when its funded endpoint can be protected safely; the current deployment requires Vercel Authentication.
+- [x] Configure platform-level access control before production launch (Vercel Authentication for all deployments).
+- [ ] Revoke or rotate the accidentally exposed SERV API key before any further use.
+- [ ] If live analysis is enabled later, add only the rotated `SERV_API_KEY` as a Vercel Production Secret; use separate limited credentials for any non-production environment.
 - [x] `.gitignore`, the 27-file prospective initial commit, and non-disclosing secret patterns were audited; generated files and local environments are excluded.
-- [ ] Stage and inspect the initial commit, create it, and publish a public repository (Git index and history are currently empty).
+- [x] Stage and inspect the initial commit, create it, and publish the public repository at `https://github.com/YakiUdoph/Viandra`.
 - [x] Truthful submission materials and checklist are prepared.
 - [x] Final quality-gate and compliance limitations are recorded.

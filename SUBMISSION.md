@@ -42,7 +42,7 @@ Viandra focuses on where meaning first drifted across successive free-text hando
 
 ## H. Known limitations
 
-The user confirmed one genuine live SERV analysis that returned structured results and exposed an over-literal semantic classification issue. The prompt refinement made afterward has not been tested live. No production deployment or automated browser/device test has been completed. The rate limiter is per instance. Exact quote checks do not prove the semantic interpretation. Proposed corrections require human review. A SERV key was exposed outside the application and must be rotated before deployment or further use. No customer validation, revenue, traction, or production usage is claimed.
+The user confirmed one genuine live SERV analysis that returned structured results and exposed an over-literal semantic classification issue. The prompt refinement made afterward has not been tested live. A Vercel production deployment exists at `https://viandra.vercel.app`, but Vercel Authentication protects all deployments and the URL is not an anonymous public demo. No automated browser/device test has been completed. The rate limiter is per instance. Exact quote checks do not prove the semantic interpretation. Proposed corrections require human review. A SERV key was exposed outside the application and must be rotated before further use; it was not configured in Vercel, so live analysis is disabled there. No customer validation, revenue, traction, or production usage is claimed.
 
 ## I. Demo walkthrough
 
@@ -68,12 +68,13 @@ Replace placeholders with real public URLs. Do not post automatically.
 
 - [ ] Confirm organizer eligibility and any kickoff-only restrictions.
 - [x] Complete one genuine live SERV analysis (user-confirmed on 2026-11-14; semantic issue observed).
-- [ ] Revoke or rotate the exposed SERV API key before any deployment or further use.
+- [ ] Revoke or rotate the exposed SERV API key before any further use.
 - [ ] Run one explicitly authorized post-refinement live accuracy check with synthetic data.
 - [ ] Perform desktop, keyboard, and mobile browser QA.
-- [ ] Stage the reviewed 27-file initial commit, inspect staged content for secrets, and create the first commit.
-- [ ] Create and verify an accessible production deployment.
-- [ ] Make the repository public and confirm secrets/history are clean.
+- [x] Stage the reviewed 27-file initial commit, inspect staged content for secrets, and create the first commit.
+- [x] Create and verify an authentication-protected Vercel production deployment with no SERV key configured.
+- [ ] Provide an accessible public demo only after its funded endpoint and abuse controls are safe; the current production URL requires Vercel Authentication.
+- [x] Make the repository public and confirm the published release contains no detected credential.
 - [ ] Record a real demo link or video.
 - [ ] Review this write-up against actual final behavior.
 - [ ] Publish the X announcement with real links before the deadline.
