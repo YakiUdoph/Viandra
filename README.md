@@ -79,7 +79,7 @@ The model does the semantic reasoning; Viandra enforces the contract. It validat
 - Missing-credential handling without a network request.
 - Input limits, bounded timeout, safe rendering, security headers, and per-instance throttles.
 - Responsive workspace, keyboard skip navigation, and reduced-motion support.
-- 29 deterministic automated tests and a production asset build.
+- A deterministic automated suite covering the core, endpoint parity, focused security regressions, and the production asset build.
 
 The tests use mocks and fixtures and spend no SERV credits. One earlier live GPT-6 Luna analysis was reported as successful and revealed an overly literal classification issue; the rubric was refined afterward. That refinement has not yet received an authorized live accuracy check.
 
@@ -129,8 +129,10 @@ The production deployment is access-controlled and is not an anonymous judge dem
 - Exact quote matching proves that quoted text exists, not that the interpretation is correct.
 - Proposed corrections are model drafts and require human review.
 - Per-instance throttles are not distributed global abuse protection.
+- An anonymously accessible funded endpoint would still require platform-level distributed abuse controls.
 - The current protected production URL is not sufficient as an anonymous public demo.
-- Hands-on physical-device QA and final real-footage recording remain human tasks.
+- Hands-on physical-device and assisted-technology QA remain NOT VERIFIED.
+- The repository contains no verified submission receipt or final public X/demo URLs; external submission status is NOT VERIFIED.
 - The available repository does not contain the referenced Serial Hackathon Winner Playbook, so no unavailable guidance has been reconstructed.
 
 Verified event requirements and uncertainties are tracked in [COMPETITION.md](COMPETITION.md). Judge-ready copy, video guidance, and the X draft are in [SUBMISSION.md](SUBMISSION.md). The evidence-scored release gates are in [READINESS.md](READINESS.md).

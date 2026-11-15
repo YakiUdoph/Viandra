@@ -129,3 +129,21 @@ At that point, no application tests, build, live SERV request, deployment, or su
 - Deployed the verified redesign revision to the existing project. Deployment `dpl_H2CisNJJAGChs9krd1fWy1c4shos` reached `READY`, reported Vercel Authentication, and was aliased to `https://viandra.vercel.app`.
 - Through authenticated Vercel access, verified the production headline “Every handoff. Every detail. Accounted for.” and `/api/health` response `{"ok":true,"servConfigured":false}`. `/api/analyze` was not invoked.
 - Readiness is 80/100. Remaining human gates are key revocation/rotation, one authorized post-refinement live check, real-footage recording and publication, the X post, and the official form.
+
+## 2026-11-14 — Focused post-submission quality and security audit
+
+- Re-read the complete governance and release record before changing application code. The referenced Serial Hackathon Winner Playbook remains unavailable; no retroactive guidance was invented.
+- Confirmed that the prior 80/100 score was a release-preparation snapshot. No submission receipt, final demo URL, or X-post URL was available, so current external submission status remains NOT VERIFIED.
+- Found and fixed three bounded defects: the local server did not serve the redesign's bundled fonts; its 32 KiB raw-body ceiling rejected some valid Unicode inputs within the documented character limits; and omitted or wrongly typed model evidence was silently normalized instead of rejected.
+- Added deterministic regression coverage for a three-handoff requirement that is preserved, dropped, and restored; valid missing evidence; stable earliest-issue selection; malformed evidence; local font delivery; and maximum valid multibyte input. These fixtures validate application behavior, not live SERV semantic accuracy.
+- Ran guarded local Edge checks with `/api/health` confirming `servConfigured: false` before the error-path request. First Tab focused the skip link; reduced-motion mode produced automatic scrolling and visible, untransformed reveal content; a 390px viewport had no horizontal overflow; three handoffs rendered; and blank-input and missing-credential errors were visible.
+- Physical-device and assisted-technology testing remain NOT VERIFIED. Per-IP and per-instance throttles remain non-distributed and insufficient for an anonymously accessible funded endpoint. Key revocation/rotation and post-refinement live accuracy remain NOT VERIFIED.
+- Ran the complete deterministic suite once after changes: 32/32 tests passed with zero failures. Ran the production build once: five required files were verified.
+- No SERV call, deployment, credential change, social post, or submission mutation was performed.
+
+## 2026-11-14 — Controlled post-audit release gate
+
+- Reviewed the complete audit diff before release. The ten-file audit scope contains no staged changes or public UI asset edits; `git diff --check` reported no content errors, and a non-disclosing scan found no credential candidates.
+- Re-ran the complete deterministic suite against the reviewed working tree: 32/32 tests passed with zero failures. Re-ran the production build: five required files were verified.
+- Checked the official Edition 02 page, its submission instructions, and targeted official-source searches for a rule allowing deployment updates after form submission. No explicit permission or prohibition was found, and the official Typeform was not inspectable through the available tooling.
+- Because post-submission update permission could not be confirmed, stopped before commit, push, or Vercel deployment as required. No production request, SERV request, environment change, X-post change, or form resubmission occurred.

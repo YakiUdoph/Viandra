@@ -1,4 +1,6 @@
-# Release readiness assessment
+# Readiness assessments
+
+## Historical release and submission snapshot — 2026-11-14
 
 Assessed on 2026-11-14 against the verified repository state, deterministic tests, browser QA, protected production deployment, and publicly visible hackathon requirements.
 
@@ -11,7 +13,9 @@ Status meanings:
 
 ## Weighted score
 
-**Actual readiness: 80/100**
+**Historical readiness at that checkpoint: 80/100**
+
+This score is preserved as a dated release-preparation snapshot. It is not the current post-submission quality/security score and does not prove that the external submission was completed.
 
 No points are awarded for unperformed live, publishing, recording, or submission actions.
 
@@ -71,3 +75,24 @@ No points are awarded for unperformed live, publishing, recording, or submission
 4. Publish the video at a judge-accessible URL and replace every placeholder.
 5. Publish the X post with the real demo/video and repository links.
 6. Complete the official submission form, including the X-post URL, before 2026-11-15 23:59 UTC.
+
+## Focused post-submission quality and security audit — 2026-11-14
+
+The phrase “post-submission” describes the requested audit phase. No submission receipt was available, so submission completion remains **NOT VERIFIED**. This assessment measures the checked application, security boundaries, tests, browser behavior, and operational limitations; it does not rescore hackathon deliverable completion.
+
+**Current evidence-backed quality/security readiness: 90/100**
+
+| Area | Weight | Awarded | Gate | Evidence |
+| --- | ---: | ---: | --- | --- |
+| Core input and product flow | 18 | 18 | PASS | Shared validation bounds original text, two to eight handoffs, individual fields, and combined content; the local Unicode transport defect was corrected and regression-tested. |
+| Model response and evidence validation | 18 | 18 | PASS | Tool-call JSON, required strings, handoff coverage and uniqueness, classifications, evidence types, exact quotation support, and deterministic earliest-issue selection are checked locally. |
+| Secret isolation and safe errors | 16 | 16 | PASS | The key remains server-only; public errors exclude raw upstream text and arbitrary codes; the non-disclosing repository scan found no credential candidate. |
+| Timeouts and request throttling | 10 | 8 | PASS WITH LIMITATION | A 30-second upstream timeout, per-IP request limit, and per-instance hourly SERV budget exist. They are not distributed global protection. |
+| Deterministic regression and build | 12 | 12 | PASS | The final post-audit suite passed 32/32 tests and the production build verified five required files; fixtures make no live SERV request and do not claim semantic accuracy. |
+| Keyboard, reduced motion, and narrow layout | 10 | 8 | PASS WITH LIMITATION | Headless Edge verified skip-link entry, reduced-motion behavior, a 390px no-overflow layout, three handoffs, and visible validation/configuration errors. Physical-device and assisted-technology testing are NOT VERIFIED. |
+| Deployment configuration boundary | 6 | 6 | PASS | The last verified production state is authentication-protected and contains no SERV credential; this audit did not deploy or mutate it. |
+| Live semantic confidence | 5 | 2 | NOT VERIFIED | One earlier live run preceded the rubric refinement. The current rubric has not received an authorized paid check. |
+| Exposed credential hygiene | 3 | 0 | NOT VERIFIED | Revocation or rotation of the previously exposed key has not been evidenced and was not attempted during this audit. |
+| Documentation and historical honesty | 2 | 2 | PASS | The 80/100 snapshot is preserved, submission status is not inferred, and current limitations are explicit. |
+
+The 95/100 target is not supported yet. The ten unawarded points require distributed protection before any funded public endpoint, physical-device/assisted-technology testing, an authorized post-refinement live SERV check, and evidence that the exposed credential was revoked or rotated.

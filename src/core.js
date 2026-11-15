@@ -153,8 +153,11 @@ function requiredString(value, field, max = 2_000) {
   return value.trim();
 }
 
-function validateEvidence(quote, source) {
-  if (typeof quote !== "string" || !quote) return { quote: null, supported: false };
+function validateEvidence(quote, source, { nullable = false } = {}) {
+  if (quote === null && nullable) return { quote: null, supported: false };
+  if (typeof quote !== "string" || !quote) {
+    throw new AppError("INVALID_SERV_RESPONSE", "SERV returned invalid source evidence.", 502);
+  }
   return { quote, supported: source.includes(quote) };
 }
 
@@ -194,7 +197,7 @@ export function parseServResponse(response, input) {
         throw new AppError("INVALID_SERV_RESPONSE", "SERV returned an invalid handoff trace.", 502);
       }
       seen.add(source.id);
-      const evidence = validateEvidence(trace.evidence, source.text);
+      const evidence = validateEvidence(trace.evidence, source.text, { nullable: true });
       return {
         handoffId: source.id,
         label: source.label,

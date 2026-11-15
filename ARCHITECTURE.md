@@ -26,7 +26,7 @@ The supported classifications are:
 
 ### Local server
 
-`server.js` serves the browser assets and exposes `GET /api/health` and `POST /api/analyze`. It validates the request, applies input and rate limits, calls the shared handler, and returns security-conscious JSON errors.
+`server.js` serves the browser assets, including the two self-hosted font files, and exposes `GET /api/health` and `POST /api/analyze`. It applies a 256 KiB transport-body ceiling before the shared 24,000-character content validation, applies rate limits, calls the shared handler, and returns security-conscious JSON errors. The larger transport ceiling is intentional because valid Unicode JSON can occupy substantially more bytes than JavaScript character counts.
 
 ### Vercel functions
 
@@ -41,6 +41,7 @@ SERV performs semantic extraction and comparison. Viandra does not trust the res
 ## Trust boundaries
 
 - Browser input is untrusted and length-bounded.
+- The local transport body is byte-bounded before JSON parsing; Vercel also applies its platform request limits before the shared content validation runs.
 - Submitted instructions are treated as data and cannot replace the system contract.
 - SERV output is untrusted until structural and exact-quotation validation succeeds.
 - Evidence marked supported must be an exact contiguous substring of the corresponding submitted source.

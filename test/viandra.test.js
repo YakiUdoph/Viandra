@@ -274,6 +274,37 @@ test("finds the first problematic handoff from the trace rather than trusting mo
   assert.equal(result.requirements[5].firstProblematicHandoff, null);
 });
 
+test("keeps the earliest dropped requirement when a third handoff restores it", () => {
+  const threeHandoffs = validateTraceRequest({
+    original: "Include the signed invoice.",
+    handoffs: [
+      "Include the signed invoice.",
+      "Package the order for dispatch.",
+      "Include the signed invoice with the order."
+    ]
+  });
+  const trace = {
+    requirements: [{
+      id: "invoice",
+      title: "Signed invoice",
+      originalEvidence: "Include the signed invoice.",
+      importance: "Preserves a required document.",
+      handoffs: [
+        { handoffId: "handoff-3", classification: "PRESERVED", evidence: "Include the signed invoice with the order.", explanation: "The requirement is restored." },
+        { handoffId: "handoff-1", classification: "PRESERVED", evidence: "Include the signed invoice.", explanation: "The requirement is preserved." },
+        { handoffId: "handoff-2", classification: "MISSING", evidence: null, explanation: "The invoice requirement is absent." }
+      ]
+    }],
+    proposedCorrection: "Include the signed invoice with the order."
+  };
+
+  const result = parseServResponse(servResponse(trace), threeHandoffs);
+  const requirement = result.requirements[0];
+  assert.deepEqual(requirement.handoffs.map((item) => item.handoffId), ["handoff-1", "handoff-2", "handoff-3"]);
+  assert.deepEqual(requirement.handoffs[1].evidence, { quote: null, supported: false });
+  assert.deepEqual(requirement.firstProblematicHandoff, { id: "handoff-2", label: "Handoff 2" });
+});
+
 test("marks an invented evidence quotation unsupported", () => {
   const altered = structuredClone(modelTrace);
   altered.requirements[0].handoffs[1].evidence = "Payment was definitely received.";
@@ -286,6 +317,16 @@ test("rejects malformed model JSON", () => {
   const response = servResponse();
   response.choices[0].message.tool_calls[0].function.arguments = "{not-json";
   assert.throws(() => parseServResponse(response, input), { code: "INVALID_SERV_RESPONSE" });
+});
+
+test("rejects omitted or wrongly typed model evidence", () => {
+  const omitted = structuredClone(modelTrace);
+  delete omitted.requirements[0].handoffs[0].evidence;
+  assert.throws(() => parseServResponse(servResponse(omitted), input), { code: "INVALID_SERV_RESPONSE" });
+
+  const wrongType = structuredClone(modelTrace);
+  wrongType.requirements[0].originalEvidence = { quote: "Do not dispatch until payment is confirmed." };
+  assert.throws(() => parseServResponse(servResponse(wrongType), input), { code: "INVALID_SERV_RESPONSE" });
 });
 
 test("rejects incomplete findings that omit a handoff", () => {
@@ -454,4 +495,35 @@ test("stops before the SERV network call when the per-instance budget is exhaust
     { code: "LOCAL_CREDIT_BUDGET" }
   );
   assert.equal(called, false);
+});
+
+test("local server serves bundled fonts and accepts valid multibyte input", async () => {
+  const previousNodeEnv = process.env.NODE_ENV;
+  process.env.NODE_ENV = "test";
+  const { server } = await import("../src/server.js");
+  if (previousNodeEnv === undefined) delete process.env.NODE_ENV;
+  else process.env.NODE_ENV = previousNodeEnv;
+
+  await new Promise((resolve) => server.listen(0, "127.0.0.1", resolve));
+  const address = server.address();
+  const baseUrl = `http://127.0.0.1:${address.port}`;
+  try {
+    const fontResponse = await fetch(`${baseUrl}/fonts/InterTight-Variable.ttf`);
+    assert.equal(fontResponse.status, 200);
+    assert.equal(fontResponse.headers.get("content-type"), "font/ttf");
+
+    const multibyte = "\u0800";
+    const response = await fetch(`${baseUrl}/api/analyze`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        original: multibyte.repeat(8_000),
+        handoffs: [multibyte.repeat(6_000), multibyte.repeat(6_000), multibyte.repeat(4_000)]
+      })
+    });
+    assert.equal(response.status, 503);
+    assert.equal((await response.json()).error.code, "SERV_NOT_CONFIGURED");
+  } finally {
+    await new Promise((resolve, reject) => server.close((error) => error ? reject(error) : resolve()));
+  }
 });

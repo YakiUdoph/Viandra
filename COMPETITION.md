@@ -1,6 +1,8 @@
 # SERV Hackathon 02 compliance record
 
-Checked against the official Edition 02 event page on 2026-11-14. The live submission form and any kickoff-only material were not available for complete inspection.
+Checked against the official Edition 02 event page on 2026-11-14. The live submission form and any kickoff-only material were not available for complete inspection. The alignment table below is a release-preparation snapshot; no later submission receipt was available in the repository.
+
+The official page does not state whether a deployed project may be updated after its form submission. Continued pre-deadline development is therefore not recorded as organizer-approved or guaranteed eligible; it proceeds under the project owner's explicit authorization and the absence of an identified prohibition.
 
 ## Verified official requirements
 
@@ -24,7 +26,7 @@ Supporting SERV documentation used by the implementation:
 - https://docs.openserv.ai/serv-reasoning/api/chat-completions
 - https://docs.openserv.ai/serv-reasoning/models
 
-## Current submission alignment
+## 2026-11-14 release-preparation alignment snapshot
 
 | Requirement | Gate | Evidence |
 | --- | --- | --- |
@@ -35,7 +37,7 @@ Supporting SERV documentation used by the implementation:
 | Demo link or video | FAIL | The production URL requires Vercel Authentication; no public video has been recorded or published. |
 | X post | FAIL | A draft exists, but nothing has been published. |
 | X post URL in form | FAIL | No X post URL exists and the form has not been submitted. |
-| Submission before deadline | NOT VERIFIED | This remains a human action. |
+| Submission before deadline | NOT VERIFIED | No submission receipt was available in the repository. |
 
 ## Honest implementation evidence
 

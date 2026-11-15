@@ -69,3 +69,28 @@ Status legend: `[x]` verified complete, `[ ]` incomplete, `[-]` not currently ve
 - [ ] Record and publish an accessible real-application demo video.
 - [ ] Publish the X post with real repository and demo/video links.
 - [ ] Complete the official submission form with the X post URL before the deadline.
+
+## Focused post-submission quality and security audit
+
+- [x] Re-audit secret isolation, request and response validation, safe errors, timeout behavior, and per-instance throttling without a live SERV call.
+- [x] Reject omitted or wrongly typed evidence while preserving valid `null` evidence for a missing requirement.
+- [x] Add deterministic three-handoff dropped-and-restored coverage and retain the earliest supported issue.
+- [x] Serve the finished UI's bundled fonts from the local server.
+- [x] Align the local byte ceiling with the documented maximum valid Unicode input.
+- [x] Recheck first-Tab focus, reduced motion, 390px overflow, three handoffs, and user-visible validation/configuration errors in local Edge.
+- [x] Preserve the historical 80/100 release score and add a transparent current quality/security rubric.
+- [x] Run the final post-audit suite (32/32 passing) and production build (five required files verified) once after changes.
+- [ ] Complete physical-device and assisted-technology testing.
+- [-] Verify post-refinement live SERV accuracy; not run because paid access was not authorized.
+- [-] Verify revocation or rotation of the previously exposed key; credential changes remain a human action.
+- [-] Verify an official submission receipt and final public URLs; no evidence was available in the repository.
+
+## Controlled post-audit release
+
+- [x] Review the complete uncommitted audit diff for accidental scope, credential candidates, and regressions; no staged files, public UI changes, credential candidates, or `diff --check` errors were found.
+- [x] Re-run the complete deterministic suite against the reviewed tree (32/32 passing) and production build (five required files verified).
+- [-] Confirm that post-submission deployment updates are permitted; the official event page and targeted official-source searches contain no explicit policy, and the submission form was not inspectable.
+- [x] Record that continued pre-deadline development is explicitly authorized by the project owner, without claiming organizer approval or guaranteed eligibility.
+- [ ] Commit and push the reviewed audit changes to the existing GitHub `main` branch.
+- [ ] Stage, verify, and promote the reviewed release to the existing Vercel project without changing production environment variables.
+- [ ] Verify the released homepage, bundled fonts, honest health status, and safe invalid-request behavior without a valid analysis request.

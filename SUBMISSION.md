@@ -1,6 +1,6 @@
 # Viandra submission kit
 
-Draft only. Nothing in this file has been posted to X or submitted to the official form.
+Originally prepared as a draft on 2026-11-14. The repository contains no verified submission receipt, published demo URL, or final X-post URL. Current external publication and submission status is therefore **NOT VERIFIED**; this kit must not be treated as proof of submission or used to alter or resubmit an entry without explicit authorization.
 
 ## Submission description
 

@@ -7,9 +7,17 @@ import { checkRateLimit, checkServRequestBudget } from "./rate-limit.js";
 
 const publicDir = fileURLToPath(new URL("../public/", import.meta.url));
 const port = Number(process.env.PORT) || 3000;
-const maxBodyBytes = 32 * 1024;
-const allowedFiles = new Set(["/", "/index.html", "/styles.css", "/app.js", "/favicon.svg"]);
-const mime = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".svg": "image/svg+xml" };
+const maxBodyBytes = 256 * 1024;
+const allowedFiles = new Set([
+  "/",
+  "/index.html",
+  "/styles.css",
+  "/app.js",
+  "/favicon.svg",
+  "/fonts/InterTight-Variable.ttf",
+  "/fonts/IBMPlexMono-Regular.ttf"
+]);
+const mime = { ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8", ".js": "text/javascript; charset=utf-8", ".svg": "image/svg+xml", ".ttf": "font/ttf" };
 const hourlyServBudget = positiveInteger(process.env.SERV_REQUESTS_PER_HOUR, 20);
 
 function positiveInteger(value, fallback) {
